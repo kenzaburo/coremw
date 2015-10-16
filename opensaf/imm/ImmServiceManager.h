@@ -12,7 +12,7 @@ class ImmServiceManager {
 public:
 	ImmServiceManager();
 	virtual ~ImmServiceManager();
-	bool saveDataReport();
+	bool writeDataReport();
 	bool readDataReport();
 };
 

@@ -62,10 +62,16 @@ int main()
 		cout<< "soft_irq_load: " <<cpu_set.soft_irq_load<<endl;
 		cout<< "total_load: "<< cpu_set.total_load<<endl;
 	}
+
+//	ImmServiceManager immManager = new ImmServiceManager();
+//	immManager.readDataReport();
+//	immManager.writeDataReport();
+
 	return 0;
 }
 
 CmwPmManager::~CmwPmManager() {
 	// TODO Auto-generated destructor stub
+
 }
 
