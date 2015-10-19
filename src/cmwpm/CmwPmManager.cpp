@@ -6,6 +6,7 @@
  */
 
 #include "CmwPmManager.h"
+#include "ImmServiceManager.h"
 #include <iostream>
 extern "C" {
 	#include "cpu_stats.h" //a C header, so wrap it in extern "C"
@@ -63,10 +64,10 @@ int main()
 		cout<< "total_load: "<< cpu_set.total_load<<endl;
 	}
 
-//	ImmServiceManager immManager = new ImmServiceManager();
-//	immManager.readDataReport();
-//	immManager.writeDataReport();
+	ImmServiceManager immManager;
 
+	immManager.writeDataReport("100","20");
+	immManager.readDataReport();
 	return 0;
 }
 
