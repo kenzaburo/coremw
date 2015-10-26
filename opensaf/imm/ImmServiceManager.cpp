@@ -120,7 +120,7 @@ void ImmServiceManager::setup() {
 ImmServiceManager::ImmServiceManager() {
 	// TODO Auto-generated constructor stub
 	// create an database if there is no
-	dbName = "/home/system_load.db";
+	dbName = "./system_load.db";
 	tbName = "system_load_tb";
 	this->setup();
 }
