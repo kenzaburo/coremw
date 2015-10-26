@@ -393,7 +393,7 @@ on `(hostname || uname -n) 2>/dev/null | sed 1q`
 "
 
 # Files that config.status was made for.
-config_files=" Makefile src/Makefile src/cmwpm/Makefile opensaf/Makefile opensaf/imm/Makefile test/Makefile test/testapp1/Makefile"
+config_files=" Makefile src/Makefile src/cmwpm/Makefile opensaf/Makefile opensaf/imm/Makefile test/Makefile test/testapp1/Makefile test/javaapp/Makefile"
 config_headers=" config.h"
 config_commands=" depfiles libtool"
 
@@ -810,6 +810,7 @@ do
     "opensaf/imm/Makefile") CONFIG_FILES="$CONFIG_FILES opensaf/imm/Makefile" ;;
     "test/Makefile") CONFIG_FILES="$CONFIG_FILES test/Makefile" ;;
     "test/testapp1/Makefile") CONFIG_FILES="$CONFIG_FILES test/testapp1/Makefile" ;;
+    "test/javaapp/Makefile") CONFIG_FILES="$CONFIG_FILES test/javaapp/Makefile" ;;
 
   *) as_fn_error $? "invalid argument: \`$ac_config_target'" "$LINENO" 5;;
   esac
@@ -886,6 +887,11 @@ S["CXXDEPMODE"]="depmode=gcc3"
 S["ac_ct_CXX"]="g++"
 S["CXXFLAGS"]="-g -O2"
 S["CXX"]="g++"
+S["SQLITE_LIBS"]="-lsqlite3  "
+S["SQLITE_CFLAGS"]=" "
+S["PKG_CONFIG_LIBDIR"]=""
+S["PKG_CONFIG_PATH"]=""
+S["PKG_CONFIG"]="/usr/bin/pkg-config"
 S["CPP"]="gcc -E"
 S["OTOOL64"]=""
 S["OTOOL"]=""

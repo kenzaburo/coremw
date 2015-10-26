@@ -22,7 +22,7 @@ int main(){
 	ImmServiceManager imm;
 
 
-	imm.writeDataReport();
+	imm.writeDataReport(NULL, NULL);
 	imm.readDataReport();
 
 }

@@ -100,7 +100,9 @@ am_CmwPmManager_OBJECTS = CmwPmManager-cpu_stats.$(OBJEXT) \
 	CmwPmManager-mem_stats.$(OBJEXT) \
 	CmwPmManager-CmwPmManager.$(OBJEXT)
 CmwPmManager_OBJECTS = $(am_CmwPmManager_OBJECTS)
-CmwPmManager_DEPENDENCIES = ../../opensaf/imm/libimm.la
+am__DEPENDENCIES_1 =
+CmwPmManager_DEPENDENCIES = ../../opensaf/imm/libimm.la \
+	$(am__DEPENDENCIES_1)
 AM_V_lt = $(am__v_lt_@AM_V@)
 am__v_lt_ = $(am__v_lt_@AM_DEFAULT_V@)
 am__v_lt_0 = --silent
@@ -244,10 +246,15 @@ PACKAGE_TARNAME = @PACKAGE_TARNAME@
 PACKAGE_URL = @PACKAGE_URL@
 PACKAGE_VERSION = @PACKAGE_VERSION@
 PATH_SEPARATOR = @PATH_SEPARATOR@
+PKG_CONFIG = @PKG_CONFIG@
+PKG_CONFIG_LIBDIR = @PKG_CONFIG_LIBDIR@
+PKG_CONFIG_PATH = @PKG_CONFIG_PATH@
 RANLIB = @RANLIB@
 SED = @SED@
 SET_MAKE = @SET_MAKE@
 SHELL = @SHELL@
+SQLITE_CFLAGS = @SQLITE_CFLAGS@
+SQLITE_LIBS = @SQLITE_LIBS@
 STRIP = @STRIP@
 VERSION = @VERSION@
 abs_builddir = @abs_builddir@
@@ -308,8 +315,8 @@ top_build_prefix = @top_build_prefix@
 top_builddir = @top_builddir@
 top_srcdir = @top_srcdir@
 CmwPmManager_SOURCES = cpu_stats.c cpu_stats.h mem_stats.c mem_stats.h CmwPmManager.cpp CmwPmManager.h
-CmwPmManager_LDADD = ../../opensaf/imm/libimm.la
-CmwPmManager_CPPFLAGS = -I$(top_srcdir)/opensaf/imm
+CmwPmManager_CPPFLAGS = -I$(top_srcdir)/opensaf/imm  $(SQLITE_CPPFLAGS)
+CmwPmManager_LDADD = ../../opensaf/imm/libimm.la $(SQLITE_LIBS)
 all: all-am
 
 .SUFFIXES:

@@ -98,7 +98,9 @@ am__installdirs = "$(DESTDIR)$(bindir)"
 PROGRAMS = $(bin_PROGRAMS)
 am_TestApp1_OBJECTS = TestApp1-TestApp1.$(OBJEXT)
 TestApp1_OBJECTS = $(am_TestApp1_OBJECTS)
-TestApp1_DEPENDENCIES = ../../opensaf/imm/libimm.la
+am__DEPENDENCIES_1 =
+TestApp1_DEPENDENCIES = ../../opensaf/imm/libimm.la \
+	$(am__DEPENDENCIES_1)
 AM_V_lt = $(am__v_lt_@AM_V@)
 am__v_lt_ = $(am__v_lt_@AM_DEFAULT_V@)
 am__v_lt_0 = --silent
@@ -242,10 +244,15 @@ PACKAGE_TARNAME = @PACKAGE_TARNAME@
 PACKAGE_URL = @PACKAGE_URL@
 PACKAGE_VERSION = @PACKAGE_VERSION@
 PATH_SEPARATOR = @PATH_SEPARATOR@
+PKG_CONFIG = @PKG_CONFIG@
+PKG_CONFIG_LIBDIR = @PKG_CONFIG_LIBDIR@
+PKG_CONFIG_PATH = @PKG_CONFIG_PATH@
 RANLIB = @RANLIB@
 SED = @SED@
 SET_MAKE = @SET_MAKE@
 SHELL = @SHELL@
+SQLITE_CFLAGS = @SQLITE_CFLAGS@
+SQLITE_LIBS = @SQLITE_LIBS@
 STRIP = @STRIP@
 VERSION = @VERSION@
 abs_builddir = @abs_builddir@
@@ -306,7 +313,7 @@ top_build_prefix = @top_build_prefix@
 top_builddir = @top_builddir@
 top_srcdir = @top_srcdir@
 TestApp1_SOURCES = TestApp1.cpp Testapp1.h
-TestApp1_LDADD = ../../opensaf/imm/libimm.la
+TestApp1_LDADD = ../../opensaf/imm/libimm.la $(SQLITE_LIBS)
 TestApp1_CPPFLAGS = -I$(top_srcdir)/opensaf/imm
 all: all-am
 

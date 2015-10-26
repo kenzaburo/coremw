@@ -7,6 +7,7 @@
 
 #include "CmwPmManager.h"
 #include "ImmServiceManager.h"
+#include <unistd.h>
 #include <iostream>
 extern "C" {
 	#include "cpu_stats.h" //a C header, so wrap it in extern "C"
@@ -41,33 +42,64 @@ int main()
 //		double soft_irq_load;
 //		double total_load;
 //	};
-
-	cout<< "Hello Trung" << endl;
+//	struct mem_info {
+//		unsigned long long mem_total;
+//		unsigned long long mem_used;
+//		unsigned long long mem_free;
+//		unsigned long long swap_total;
+//		unsigned long long swap_used;
+//		unsigned long long swap_free;
+//		double mem_percent_used;
+//		double mem_percent_free;
+//		double swap_percent_used;
+//		double swap_percent_free;
+//	};
+//	struct mem_info_set {
+//		struct mem_info mem_info;
+//		void *priv;
+//	};
 	struct cpu_info_set* cpuInfo;
+	struct mem_info_set* memInfo;
 	cpuInfo = cpu_info_init();
-	int i = cpu_info_update(cpuInfo);
-	if(i != 0){
-		cout<< "can't reading cpu info"<< endl;
-	}else{
-		cout<<"successful reading cpu info"<< endl;
-		struct cpu_info cpu_set = cpuInfo->overall;
-		cout<< "number of cpus: "<< cpuInfo->num_cpus<<endl;
-		cout<< "core_id: "<< cpu_set.core_id<<endl;
-		cout<< "socket id: "<< cpu_set.socket_id<<endl;
-		cout<< "cpu_count: "<< cpu_set.cpu_count<<endl;
-		cout<< "user_load: " << cpu_set.user_load<<endl;
-		cout<< "nice_load: " << cpu_set.nice_load<<endl;
-		cout<< "system_load: " <<cpu_set.system_load<<endl;
-		cout<< "io_wait_load: " <<cpu_set.system_load <<endl;
-		cout<< "irq_load: " <<cpu_set.irq_load<< endl;
-		cout<< "soft_irq_load: " <<cpu_set.soft_irq_load<<endl;
-		cout<< "total_load: "<< cpu_set.total_load<<endl;
+	memInfo = mem_info_init();
+	if(!memInfo){
+		cout<< "can't init memInfo";
+		return -1;
 	}
 
-	ImmServiceManager immManager;
+	while(true){
+		int i = cpu_info_update(cpuInfo);
+		int j = mem_info_update(memInfo);
+		if(i != 0 || j != 0){
+			cout<< "can't reading cpu/ram info"<< endl;
+		}else{
+			cout<<"successful reading cpu info"<< endl;
+			struct cpu_info cpu_set = cpuInfo->overall;
+			cout<< "number of cpus: "<< cpuInfo->num_cpus<<endl;
+			cout<< "core_id: "<< cpu_set.core_id<<endl;
+			cout<< "socket id: "<< cpu_set.socket_id<<endl;
+			cout<< "cpu_count: "<< cpu_set.cpu_count<<endl;
+			cout<< "user_load: " << cpu_set.user_load<<endl;
+			cout<< "nice_load: " << cpu_set.nice_load<<endl;
+			cout<< "system_load: " <<cpu_set.system_load<<endl;
+			cout<< "io_wait_load: " <<cpu_set.system_load <<endl;
+			cout<< "irq_load: " <<cpu_set.irq_load<< endl;
+			cout<< "soft_irq_load: " <<cpu_set.soft_irq_load<<endl;
+			cout<< "total_load: "<< cpu_set.total_load<<endl;
 
-	immManager.writeDataReport("100","20");
-	immManager.readDataReport();
+			cout<<"successful reading cpu info"<< endl;
+			struct mem_info mem_set = memInfo->mem_info;
+			cout<< "mem total: " << mem_set.mem_total <<endl;
+			cout<< "mem used: " << mem_set.mem_used <<endl;
+			cout<< "mem free: " << mem_set.mem_free <<endl;
+		}
+		usleep(10000000);
+	}
+
+//	ImmServiceManager immManager;
+
+//	immManager.writeDataReport("100","20");
+//	immManager.readDataReport();
 	return 0;
 }
 

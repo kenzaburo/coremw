@@ -8,11 +8,11 @@ AM_INIT_AUTOMAKE(-Wall -Werror foreign)
 AM_PROG_AR
 
 LT_INIT
-
+PKG_CHECK_MODULES(SQLITE, sqlite3 >= 3.8)
 AC_PROG_RANLIB
 AC_PROG_CXX
 AC_PROG_CC
 AC_CONFIG_HEADERS([config.h])
-AC_CONFIG_FILES(Makefile src/Makefile src/cmwpm/Makefile opensaf/Makefile opensaf/imm/Makefile test/Makefile test/testapp1/Makefile)
+AC_CONFIG_FILES(Makefile src/Makefile src/cmwpm/Makefile opensaf/Makefile opensaf/imm/Makefile test/Makefile test/testapp1/Makefile test/javaapp/Makefile)
 AC_OUTPUT
 

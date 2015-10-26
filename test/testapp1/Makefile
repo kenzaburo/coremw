@@ -98,7 +98,9 @@ am__installdirs = "$(DESTDIR)$(bindir)"
 PROGRAMS = $(bin_PROGRAMS)
 am_TestApp1_OBJECTS = TestApp1-TestApp1.$(OBJEXT)
 TestApp1_OBJECTS = $(am_TestApp1_OBJECTS)
-TestApp1_DEPENDENCIES = ../../opensaf/imm/libimm.la
+am__DEPENDENCIES_1 =
+TestApp1_DEPENDENCIES = ../../opensaf/imm/libimm.la \
+	$(am__DEPENDENCIES_1)
 AM_V_lt = $(am__v_lt_$(V))
 am__v_lt_ = $(am__v_lt_$(AM_DEFAULT_VERBOSITY))
 am__v_lt_0 = --silent
@@ -242,10 +244,15 @@ PACKAGE_TARNAME = coremw
 PACKAGE_URL = 
 PACKAGE_VERSION = 1.0
 PATH_SEPARATOR = :
+PKG_CONFIG = /usr/bin/pkg-config
+PKG_CONFIG_LIBDIR = 
+PKG_CONFIG_PATH = 
 RANLIB = ranlib
 SED = /bin/sed
 SET_MAKE = 
 SHELL = /bin/bash
+SQLITE_CFLAGS =  
+SQLITE_LIBS = -lsqlite3  
 STRIP = strip
 VERSION = 1.0
 abs_builddir = /home/trunghuynh/c_plus_plus/coremw/test/testapp1
@@ -306,7 +313,7 @@ top_build_prefix = ../../
 top_builddir = ../..
 top_srcdir = ../..
 TestApp1_SOURCES = TestApp1.cpp Testapp1.h
-TestApp1_LDADD = ../../opensaf/imm/libimm.la
+TestApp1_LDADD = ../../opensaf/imm/libimm.la $(SQLITE_LIBS)
 TestApp1_CPPFLAGS = -I$(top_srcdir)/opensaf/imm
 all: all-am
 

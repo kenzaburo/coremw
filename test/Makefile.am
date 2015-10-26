@@ -1,1 +1,1 @@
-SUBDIRS = testapp1
+SUBDIRS = testapp1 javaapp

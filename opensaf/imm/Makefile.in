@@ -122,7 +122,8 @@ am__uninstall_files_from_dir = { \
   }
 am__installdirs = "$(DESTDIR)$(libdir)"
 LTLIBRARIES = $(lib_LTLIBRARIES)
-libimm_la_LIBADD =
+am__DEPENDENCIES_1 =
+libimm_la_DEPENDENCIES = $(am__DEPENDENCIES_1)
 am_libimm_la_OBJECTS = libimm_la-ImmServiceManager.lo
 libimm_la_OBJECTS = $(am_libimm_la_OBJECTS)
 AM_V_lt = $(am__v_lt_@AM_V@)
@@ -250,10 +251,15 @@ PACKAGE_TARNAME = @PACKAGE_TARNAME@
 PACKAGE_URL = @PACKAGE_URL@
 PACKAGE_VERSION = @PACKAGE_VERSION@
 PATH_SEPARATOR = @PATH_SEPARATOR@
+PKG_CONFIG = @PKG_CONFIG@
+PKG_CONFIG_LIBDIR = @PKG_CONFIG_LIBDIR@
+PKG_CONFIG_PATH = @PKG_CONFIG_PATH@
 RANLIB = @RANLIB@
 SED = @SED@
 SET_MAKE = @SET_MAKE@
 SHELL = @SHELL@
+SQLITE_CFLAGS = @SQLITE_CFLAGS@
+SQLITE_LIBS = @SQLITE_LIBS@
 STRIP = @STRIP@
 VERSION = @VERSION@
 abs_builddir = @abs_builddir@
@@ -315,7 +321,8 @@ top_builddir = @top_builddir@
 top_srcdir = @top_srcdir@
 lib_LTLIBRARIES = libimm.la
 libimm_la_SOURCES = ImmServiceManager.cpp
-libimm_la_CPPFLAGS = -I$(top_srcdir)/opensaf/imm
+libimm_la_CPPFLAGS = -I$(top_srcdir)/opensaf/imm  $(SQLITE_CPPFLAGS)
+libimm_la_LIBADD = $(SQLITE_LIBS)
 imm_HEADER = ImmServiceManager.h
 all: all-am
 

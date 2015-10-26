@@ -232,10 +232,15 @@ PACKAGE_TARNAME = coremw
 PACKAGE_URL = 
 PACKAGE_VERSION = 1.0
 PATH_SEPARATOR = :
+PKG_CONFIG = /usr/bin/pkg-config
+PKG_CONFIG_LIBDIR = 
+PKG_CONFIG_PATH = 
 RANLIB = ranlib
 SED = /bin/sed
 SET_MAKE = 
 SHELL = /bin/bash
+SQLITE_CFLAGS =  
+SQLITE_LIBS = -lsqlite3  
 STRIP = strip
 VERSION = 1.0
 abs_builddir = /home/trunghuynh/c_plus_plus/coremw/test
@@ -295,7 +300,7 @@ target_vendor = unknown
 top_build_prefix = ../
 top_builddir = ..
 top_srcdir = ..
-SUBDIRS = testapp1
+SUBDIRS = testapp1 javaapp
 all: all-recursive
 
 .SUFFIXES:

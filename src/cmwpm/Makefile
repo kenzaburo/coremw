@@ -100,7 +100,9 @@ am_CmwPmManager_OBJECTS = CmwPmManager-cpu_stats.$(OBJEXT) \
 	CmwPmManager-mem_stats.$(OBJEXT) \
 	CmwPmManager-CmwPmManager.$(OBJEXT)
 CmwPmManager_OBJECTS = $(am_CmwPmManager_OBJECTS)
-CmwPmManager_DEPENDENCIES = ../../opensaf/imm/libimm.la
+am__DEPENDENCIES_1 =
+CmwPmManager_DEPENDENCIES = ../../opensaf/imm/libimm.la \
+	$(am__DEPENDENCIES_1)
 AM_V_lt = $(am__v_lt_$(V))
 am__v_lt_ = $(am__v_lt_$(AM_DEFAULT_VERBOSITY))
 am__v_lt_0 = --silent
@@ -244,10 +246,15 @@ PACKAGE_TARNAME = coremw
 PACKAGE_URL = 
 PACKAGE_VERSION = 1.0
 PATH_SEPARATOR = :
+PKG_CONFIG = /usr/bin/pkg-config
+PKG_CONFIG_LIBDIR = 
+PKG_CONFIG_PATH = 
 RANLIB = ranlib
 SED = /bin/sed
 SET_MAKE = 
 SHELL = /bin/bash
+SQLITE_CFLAGS =  
+SQLITE_LIBS = -lsqlite3  
 STRIP = strip
 VERSION = 1.0
 abs_builddir = /home/trunghuynh/c_plus_plus/coremw/src/cmwpm
@@ -308,8 +315,8 @@ top_build_prefix = ../../
 top_builddir = ../..
 top_srcdir = ../..
 CmwPmManager_SOURCES = cpu_stats.c cpu_stats.h mem_stats.c mem_stats.h CmwPmManager.cpp CmwPmManager.h
-CmwPmManager_LDADD = ../../opensaf/imm/libimm.la
-CmwPmManager_CPPFLAGS = -I$(top_srcdir)/opensaf/imm
+CmwPmManager_CPPFLAGS = -I$(top_srcdir)/opensaf/imm  $(SQLITE_CPPFLAGS)
+CmwPmManager_LDADD = ../../opensaf/imm/libimm.la $(SQLITE_LIBS)
 all: all-am
 
 .SUFFIXES:

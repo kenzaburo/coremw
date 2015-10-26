@@ -9,9 +9,7 @@
 #include <iostream>
 #include <sqlite3.h>
 #include <stdio.h>
-//Provide api to read/write data into sqlite
-//Read
-//Write
+
 using namespace std;
 static int callback(void *NotUsed, int argc, char **argv, char **azColName) {
 	int i;
@@ -32,10 +30,10 @@ bool ImmServiceManager::readDataReport() {
 	const char* data = "Callback function called";
 
 	/* Open database */
-	rc = sqlite3_open("test.db", &db);
+	rc = sqlite3_open(dbname.c_str(), &db);
 	if (rc) {
 		fprintf(stderr, "Can't open database: %s\n", sqlite3_errmsg(db));
-//		exit(0);
+		//		exit(0);
 		return false;
 	} else {
 		fprintf(stderr, "Opened database successfully\n");
@@ -65,17 +63,16 @@ bool ImmServiceManager::writeDataReport(string cpuLoad, string ramLoad) {
 	string sql;
 
 	/* Open database */
-	rc = sqlite3_open("test.db", &db);
+	rc = sqlite3_open(dbname.c_str(), &db);
 	if (rc) {
 		fprintf(stderr, "Can't open database: %s\n", sqlite3_errmsg(db));
-//		exit(0);
+		//		exit(0);
 		return false;
 	} else {
 		fprintf(stderr, "Opened database successfully\n");
 	}
 
-	sql = "insert into " + tbName + "(CPU_LOAD,RAM_LOAD) VALUES ("
-			+ cpuLoad + "," + ramLoad + ")";
+	sql = "insert into " + tbName + "(CPU_LOAD,RAM_LOAD) VALUES (" + cpuLoad + "," + ramLoad + ")";
 	/* Execute SQL statement */
 	rc = sqlite3_exec(db, sql.c_str(), callback, 0, &zErrMsg);
 	if (rc != SQLITE_OK) {

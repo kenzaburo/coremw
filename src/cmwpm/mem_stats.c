@@ -83,14 +83,16 @@ int mem_info_update(struct mem_info_set *mem_info_set)
 	int count;
 
 	file = fopen(MEMINFO_FILE, "r");
-	if (!file)
+	if (!file){
+		printf("can't read file: %s",MEMINFO_FILE);
 		return -1;
+	}
 
 	count = fscanf(file,
-			"MemTotal: %llu kB\n"			/* MemTotal */
-			"MemFree: %llu kB\n"			/* MemFree */
-			"Buffers: %llu kB\n"			/* Buffers */
-			"Cached: %llu kB\n"			/* Cached */
+			"MemTotal:        %llu kB\n"			/* MemTotal */
+			"MemFree:        %llu kB\n"			/* MemFree */
+			"Buffers:        %llu kB\n"			/* Buffers */
+			"Cached:        %llu kB\n"			/* Cached */
 			"%*[^\n]\n"				/* Ignore */
 			"%*[^\n]\n"				/* Ignore */
 			"%*[^\n]\n"				/* Ignore */
@@ -100,15 +102,15 @@ int mem_info_update(struct mem_info_set *mem_info_set)
 			"%*[^\n]\n"				/* Ignore */
 			"%*[^\n]\n"				/* Ignore */
 			"%*[^\n]\n"				/* Ignore */
-			"SwapTotal: %llu kB\n"			/* SwapTotal */
-			"SwapFree: %llu kB\n"			/* SwapFree */
+			"SwapTotal:       %llu kB\n"			/* SwapTotal */
+			"SwapFree:        %llu kB\n"			/* SwapFree */
 			"%*[^\n]\n"				/* Ignore */
 			"%*[^\n]\n"				/* Ignore */
 			"%*[^\n]\n"				/* Ignore */
 			"%*[^\n]\n"				/* Ignore */
-			"Shmem: %llu kB\n"			/* Shmem */
+			"Shmem:             %llu kB\n"			/* Shmem */
 			"%*[^\n]\n"				/* Ignore */
-			"SReclaimable: %llu kB\n"		/* SReclaimable */
+			"SReclaimable:     %llu kB\n"		/* SReclaimable */
 			,					/* Ignore the rest */
 			&mem_total,
 			&mem_free,
@@ -122,8 +124,10 @@ int mem_info_update(struct mem_info_set *mem_info_set)
 	/* Close file */
 	fclose(file);
 
-	if (count != 8)
-		return -1;
+//	if (count != 8){
+//		printf("count: %d", count);
+//		return -1;
+//	}
 
 	/* Update latest value */
 	mem_info_set->mem_info.mem_total = mem_total;
