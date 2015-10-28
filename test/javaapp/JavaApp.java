@@ -9,9 +9,10 @@ public class JavaApp{
 		System.out.println("hello trung we are trying to use c/c++ friends");
 		System.out.println("readDataReport");
 		JavaApp javaApp = new JavaApp();
-		javaApp.readDataReport();
-
-		System.out.println("writeDataReport()");
-		javaApp.writeDataReport("50","20");
+		// javaApp.readDataReport();
+		for(int i = 0; i <100000; i++){
+			System.out.println("writeDataReport()");
+			javaApp.writeDataReport("50","20");
+		}
 	}
 }

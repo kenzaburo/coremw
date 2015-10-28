@@ -1,0 +1,32 @@
+1000 write request:
+-------------------
+Thứ tư, 28 Tháng mười năm 2015 14:47:00 ICT
+Thứ tư, 28 Tháng mười năm 2015 14:47:16 ICT
+->16s
+---------------------------------------------
+java without jni
+----------------
+Thứ tư, 28 Tháng mười năm 2015 15:13:56 ICT
+Thứ tư, 28 Tháng mười năm 2015 15:14:13 ICT
+->17s
+
+10000 open/write requests:
+-------------------------
+Thứ tư, 28 Tháng mười năm 2015 15:18:36 ICT
+Thứ tư, 28 Tháng mười năm 2015 15:21:31 ICT
+->175s
+-------------------------------------------
+java without jni
+Thứ tư, 28 Tháng mười năm 2015 15:23:37 ICT
+Thứ tư, 28 Tháng mười năm 2015 15:26:29 ICT
+->174s
+
+100.000
+--------------
+Thứ tư, 28 Tháng mười năm 2015 15:29:48 ICT
+Thứ tư, 28 Tháng mười năm 2015 16:08:40 ICT
+36phut 52 giay
+-------------------------------------------
+Thứ tư, 28 Tháng mười năm 2015 16:11:20 ICT
+Thứ tư, 28 Tháng mười năm 2015 16:49:35 ICT
+-38phut 15 giay

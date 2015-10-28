@@ -78,7 +78,6 @@ PRE_UNINSTALL = :
 POST_UNINSTALL = :
 build_triplet = @build@
 host_triplet = @host@
-target_triplet = @target@
 bin_PROGRAMS = TestApp1$(EXEEXT)
 subdir = test/testapp1
 DIST_COMMON = $(srcdir)/Makefile.in $(srcdir)/Makefile.am \
@@ -99,7 +98,7 @@ PROGRAMS = $(bin_PROGRAMS)
 am_TestApp1_OBJECTS = TestApp1-TestApp1.$(OBJEXT)
 TestApp1_OBJECTS = $(am_TestApp1_OBJECTS)
 am__DEPENDENCIES_1 =
-TestApp1_DEPENDENCIES = ../../opensaf/imm/libimm.la \
+TestApp1_DEPENDENCIES = $(top_srcdir)/opensaf/imm/libimm.la \
 	$(am__DEPENDENCIES_1)
 AM_V_lt = $(am__v_lt_@AM_V@)
 am__v_lt_ = $(am__v_lt_@AM_DEFAULT_V@)
@@ -304,16 +303,12 @@ sbindir = @sbindir@
 sharedstatedir = @sharedstatedir@
 srcdir = @srcdir@
 sysconfdir = @sysconfdir@
-target = @target@
 target_alias = @target_alias@
-target_cpu = @target_cpu@
-target_os = @target_os@
-target_vendor = @target_vendor@
 top_build_prefix = @top_build_prefix@
 top_builddir = @top_builddir@
 top_srcdir = @top_srcdir@
 TestApp1_SOURCES = TestApp1.cpp Testapp1.h
-TestApp1_LDADD = ../../opensaf/imm/libimm.la $(SQLITE_LIBS)
+TestApp1_LDADD = $(top_srcdir)/opensaf/imm/libimm.la $(SQLITE_LIBS)
 TestApp1_CPPFLAGS = -I$(top_srcdir)/opensaf/imm
 all: all-am
 

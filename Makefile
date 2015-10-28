@@ -77,7 +77,6 @@ PRE_UNINSTALL = :
 POST_UNINSTALL = :
 build_triplet = x86_64-unknown-linux-gnu
 host_triplet = x86_64-unknown-linux-gnu
-target_triplet = x86_64-unknown-linux-gnu
 subdir = .
 DIST_COMMON = $(srcdir)/Makefile.in $(srcdir)/Makefile.am \
 	$(top_srcdir)/configure $(am__configure_deps) \
@@ -316,15 +315,11 @@ sbindir = ${exec_prefix}/sbin
 sharedstatedir = ${prefix}/com
 srcdir = .
 sysconfdir = ${prefix}/etc
-target = x86_64-unknown-linux-gnu
 target_alias = 
-target_cpu = x86_64
-target_os = linux-gnu
-target_vendor = unknown
 top_build_prefix = 
 top_builddir = .
 top_srcdir = .
-SUBDIRS = src opensaf test
+SUBDIRS = opensaf src test
 all: config.h
 	$(MAKE) $(AM_MAKEFLAGS) all-recursive
 

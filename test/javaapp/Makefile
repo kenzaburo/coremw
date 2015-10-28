@@ -78,7 +78,6 @@ PRE_UNINSTALL = :
 POST_UNINSTALL = :
 build_triplet = x86_64-unknown-linux-gnu
 host_triplet = x86_64-unknown-linux-gnu
-target_triplet = x86_64-unknown-linux-gnu
 subdir = test/javaapp
 DIST_COMMON = $(srcdir)/Makefile.in $(srcdir)/Makefile.am \
 	$(top_srcdir)/depcomp
@@ -124,7 +123,7 @@ am__installdirs = "$(DESTDIR)$(libdir)"
 LTLIBRARIES = $(lib_LTLIBRARIES)
 am__DEPENDENCIES_1 =
 libjavaJNI_la_DEPENDENCIES = $(am__DEPENDENCIES_1) \
-	../../opensaf/imm/libimm.la
+	$(top_srcdir)/opensaf/imm/libimm.la
 am_libjavaJNI_la_OBJECTS = libjavaJNI_la-JavaApp.lo
 libjavaJNI_la_OBJECTS = $(am_libjavaJNI_la_OBJECTS)
 AM_V_lt = $(am__v_lt_$(V))
@@ -330,18 +329,14 @@ sbindir = ${exec_prefix}/sbin
 sharedstatedir = ${prefix}/com
 srcdir = .
 sysconfdir = ${prefix}/etc
-target = x86_64-unknown-linux-gnu
 target_alias = 
-target_cpu = x86_64
-target_os = linux-gnu
-target_vendor = unknown
 top_build_prefix = ../../
 top_builddir = ../..
 top_srcdir = ../..
 lib_LTLIBRARIES = libjavaJNI.la
 libjavaJNI_la_SOURCES = JavaApp.cpp JavaApp.h
 libjavaJNI_la_CPPFLAGS = -I$(top_srcdir)/opensaf/imm  $(SQLITE_CPPFLAGS) -I$(JAVA_HOME)/include -I$(JAVA_HOME)/include/linux
-libjavaJNI_la_LIBADD = $(SQLITE_LIBS) ../../opensaf/imm/libimm.la 
+libjavaJNI_la_LIBADD = $(SQLITE_LIBS) $(top_srcdir)/opensaf/imm/libimm.la 
 all: all-am
 
 .SUFFIXES:

@@ -1,1 +1,1 @@
-SUBDIRS = src opensaf test
+SUBDIRS = opensaf src test

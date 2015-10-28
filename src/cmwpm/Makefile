@@ -78,7 +78,6 @@ PRE_UNINSTALL = :
 POST_UNINSTALL = :
 build_triplet = x86_64-unknown-linux-gnu
 host_triplet = x86_64-unknown-linux-gnu
-target_triplet = x86_64-unknown-linux-gnu
 bin_PROGRAMS = CmwPmManager$(EXEEXT)
 subdir = src/cmwpm
 DIST_COMMON = $(srcdir)/Makefile.in $(srcdir)/Makefile.am \
@@ -100,9 +99,7 @@ am_CmwPmManager_OBJECTS = CmwPmManager-cpu_stats.$(OBJEXT) \
 	CmwPmManager-mem_stats.$(OBJEXT) \
 	CmwPmManager-CmwPmManager.$(OBJEXT)
 CmwPmManager_OBJECTS = $(am_CmwPmManager_OBJECTS)
-am__DEPENDENCIES_1 =
-CmwPmManager_DEPENDENCIES = ../../opensaf/imm/libimm.la \
-	$(am__DEPENDENCIES_1)
+CmwPmManager_DEPENDENCIES = $(top_srcdir)/opensaf/imm/libimm.la
 AM_V_lt = $(am__v_lt_$(V))
 am__v_lt_ = $(am__v_lt_$(AM_DEFAULT_VERBOSITY))
 am__v_lt_0 = --silent
@@ -306,17 +303,13 @@ sbindir = ${exec_prefix}/sbin
 sharedstatedir = ${prefix}/com
 srcdir = .
 sysconfdir = ${prefix}/etc
-target = x86_64-unknown-linux-gnu
 target_alias = 
-target_cpu = x86_64
-target_os = linux-gnu
-target_vendor = unknown
 top_build_prefix = ../../
 top_builddir = ../..
 top_srcdir = ../..
 CmwPmManager_SOURCES = cpu_stats.c cpu_stats.h mem_stats.c mem_stats.h CmwPmManager.cpp CmwPmManager.h
-CmwPmManager_CPPFLAGS = -I$(top_srcdir)/opensaf/imm  $(SQLITE_CPPFLAGS)
-CmwPmManager_LDADD = ../../opensaf/imm/libimm.la $(SQLITE_LIBS)
+CmwPmManager_CPPFLAGS = -I$(top_srcdir)/opensaf/imm  
+CmwPmManager_LDADD = $(top_srcdir)/opensaf/imm/libimm.la 
 all: all-am
 
 .SUFFIXES:

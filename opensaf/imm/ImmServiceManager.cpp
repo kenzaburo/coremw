@@ -9,8 +9,10 @@
 #include <iostream>
 #include <sqlite3.h>
 #include <stdio.h>
+#include <string>
 
 using namespace std;
+
 static int callback(void *NotUsed, int argc, char **argv, char **azColName) {
 	int i;
 	for (i = 0; i < argc; i++) {
@@ -30,7 +32,7 @@ bool ImmServiceManager::readDataReport() {
 	const char* data = "Callback function called";
 
 	/* Open database */
-	rc = sqlite3_open(dbname.c_str(), &db);
+	rc = sqlite3_open(this->dbName.c_str(), &db);
 	if (rc) {
 		fprintf(stderr, "Can't open database: %s\n", sqlite3_errmsg(db));
 		//		exit(0);
@@ -63,7 +65,7 @@ bool ImmServiceManager::writeDataReport(string cpuLoad, string ramLoad) {
 	string sql;
 
 	/* Open database */
-	rc = sqlite3_open(dbname.c_str(), &db);
+	rc = sqlite3_open(this->dbName.c_str(), &db);
 	if (rc) {
 		fprintf(stderr, "Can't open database: %s\n", sqlite3_errmsg(db));
 		//		exit(0);
@@ -91,7 +93,8 @@ void ImmServiceManager::setup() {
 	char *zErrMsg = 0;
 	int rc;
 	string sql;
-	const char* dbname = dbName.c_str();
+	const char* dbname = this->dbName.c_str();
+	fprintf(stderr, "database name: %s\n table:%s\n",this->dbName.c_str(),this->tbName.c_str());
 	/* Open/create an database */
 	rc = sqlite3_open(dbname, &db);
 	if (rc) {
@@ -101,8 +104,8 @@ void ImmServiceManager::setup() {
 		fprintf(stderr, "Opened database successfully\n");
 	}
 	/* Create SQL statement */
-	sql = "CREATE TABLE system_load_tb("
-			"ID INT PRIMARY KEY     NOT NULL,"
+	sql = "CREATE TABLE " + this->tbName + "("
+			"ID  INTEGER PRIMARY KEY   AUTOINCREMENT,"
 			"CPU_LOAD           TEXT    NOT NULL,"
 			"RAM_LOAD            INT     NOT NULL);";
 
@@ -120,9 +123,8 @@ void ImmServiceManager::setup() {
 ImmServiceManager::ImmServiceManager() {
 	// TODO Auto-generated constructor stub
 	// create an database if there is no
-	dbName = "./system_load.db";
+	dbName = "/home/trunghuynh/c_plus_plus/coremw/db/system_load.db";
 	tbName = "system_load_tb";
-	this->setup();
 }
 
 ImmServiceManager::~ImmServiceManager() {
